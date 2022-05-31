@@ -51,6 +51,7 @@ namespace ResourceAPI.Controllers
             return Ok(resources);
         }
 
+
         // GET: api/Resources/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Resource>> GetResource(int id)
@@ -59,6 +60,7 @@ namespace ResourceAPI.Controllers
           {
               return NotFound();
           }
+          //Step 08. Modify the code below to include Categories
             var resource = await _context.Resources.Where(x => x.ResourceId == id).Select(x => new Resource()
             {
                 //Assign each resource in our data set to a new Resource object for this application.
@@ -124,6 +126,7 @@ namespace ResourceAPI.Controllers
           {
               return Problem("Entity set 'ResourcesContext.Resources'  is null.");
           }
+          //Step 10. Modify the code below to manage how a Resource is posted
             Resource newResource = new Resource()
             {
                 Name = resource.Name,
